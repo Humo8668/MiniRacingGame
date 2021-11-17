@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace MiniRacing
 {
@@ -34,8 +32,8 @@ namespace MiniRacing
         Vector3 getSmoothedPos(Vector3 current, Vector3 target)
         {
             Vector3 curVel = Vector3.zero;
-            return Vector3.SmoothDamp(current, target, ref curVel, smoothness * Time.deltaTime);
-            //return Vector3.Lerp(current, target, smoothness * Time.fixedDeltaTime);
+            //return Vector3.SmoothDamp(current, target, ref curVel, smoothness * Time.deltaTime);
+            return Vector3.Lerp(current, target, Time.deltaTime * smoothness);
         }
 
         void FixedSmooth()
@@ -61,7 +59,6 @@ namespace MiniRacing
             Vector3 backDistanceVect = (-distanceFromTarget) * targetForward;
             Vector3 fromTargetToCamera = lookAngleQuatern * backDistanceVect;
             Vector3 desiredPos = target.position + fromTargetToCamera;
-            Debug.DrawLine(target.position, target.position + fromTargetToCamera, Color.red);
 
             Vector3 smoothedPos = getSmoothedPos(camTransform.position, desiredPos);
             this.camTransform.position = smoothedPos;
@@ -76,8 +73,6 @@ namespace MiniRacing
             Vector3 backDistanceVect = (-distanceFromTarget) * targetForward;
             Vector3 fromTargetToCamera = lookAngleQuatern * backDistanceVect;
             Vector3 desiredPos = target.position + fromTargetToCamera;
-            //Debug.DrawLine(target.position, target.position + target.TransformDirection(Vector3.forward), Color.green);
-            //Debug.DrawLine(target.position, target.position + desiredPos, Color.red);
 
             this.camTransform.position = desiredPos;
             this.camTransform.LookAt(target);
@@ -92,7 +87,7 @@ namespace MiniRacing
             camTransform = cam.transform;
         }
 
-        void LateUpdate()
+        void Update()
         {
             switch (followMode)
             {

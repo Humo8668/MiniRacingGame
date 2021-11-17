@@ -311,10 +311,12 @@
 -r:"Library/Bee/artifacts/500b0aEDbg.dag/UnityEngine.UI.ref.dll"
 "Assets/Scripts/BaseComponent.cs"
 "Assets/Scripts/CarController.cs"
+"Assets/Scripts/Grid2d.cs"
 "Assets/Scripts/RacingCar.cs"
 "Assets/Scripts/Road.cs"
 "Assets/Scripts/ThirdPersonCamera.cs"
 "Assets/Scripts/ThirdPersonCameraEditor.cs"
+"Assets/Scripts/TrackController.cs"
 "Assets/Scripts/WheelSync.cs"
 -langversion:8.0
 

@@ -1,14 +1,15 @@
-﻿using UnityEditor;
+﻿#if UNITY_EDITOR
+
 using UnityEngine;
 
 namespace MiniRacing
 {
-    [CustomEditor(typeof(ThirdPersonCamera))]
-    public class ThirdPersonCameraEditor : Editor
+    [UnityEditor.CustomEditor(typeof(ThirdPersonCamera))]
+    public class ThirdPersonCameraEditor : UnityEditor.Editor
     {
-        SerializedProperty maxDistFromTargetProp;
-        SerializedProperty lookAngleProp;
-        SerializedProperty offsetFromTargetProp;
+        UnityEditor.SerializedProperty maxDistFromTargetProp;
+        UnityEditor.SerializedProperty lookAngleProp;
+        UnityEditor.SerializedProperty offsetFromTargetProp;
 
         void OnEnable()
         {
@@ -25,14 +26,16 @@ namespace MiniRacing
             if(controller.followMode == ThirdPersonCamera.FollowMode.FixedHard ||
                 controller.followMode == ThirdPersonCamera.FollowMode.FixedSmooth)
             {
-                EditorGUILayout.PropertyField(offsetFromTargetProp, new GUIContent("Offset from target"));
+                UnityEditor.EditorGUILayout.PropertyField(offsetFromTargetProp, new GUIContent("Offset from target"));
             }
             else
             {
-                EditorGUILayout.Slider(maxDistFromTargetProp, 1, 30, new GUIContent("Max distance from target"));
-                EditorGUILayout.Slider(lookAngleProp, 0, 90, new GUIContent("Camera looking angle"));
+                UnityEditor.EditorGUILayout.Slider(maxDistFromTargetProp, 1, 30, new GUIContent("Distance from target"));
+                UnityEditor.EditorGUILayout.Slider(lookAngleProp, 0, 90, new GUIContent("Camera looking angle"));
             }
             serializedObject.ApplyModifiedProperties();
         }
     }
 }
+
+#endif

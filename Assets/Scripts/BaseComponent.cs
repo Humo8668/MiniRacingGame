@@ -1,22 +1,23 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class BaseComponent : MonoBehaviour
+namespace MiniRacing
 {
-    protected Transform thisTransform;
-    private void Awake()
+    public class BaseComponent : MonoBehaviour
     {
-        thisTransform = this.transform;
-    }
-    void Start()
-    {
-        
-    }
+        protected Transform thisTransform;
+        private void Awake()
+        {
+            thisTransform = this.transform;
+        }
+        void Start()
+        {
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+
+        }
     }
 }
